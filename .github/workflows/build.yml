@@ -18,7 +18,10 @@ jobs:
       run: | 
         mkdir compiler
         cd compiler
-        wget http://ellcc.org/releases/latest/ellcc-x86_64-linux-2017-08-23.bz2
+        wget "http://ellcc.org/releases/latest/ellcc-x86_64-linux-2017-08-23.bz2" -O temp.zip
+        bunzip2 temp.zip
+        tar xvf temp
+        cd ellcc
         ./ellcc install
         ./ellcc install libraries
     
