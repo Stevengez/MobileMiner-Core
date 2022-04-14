@@ -16,7 +16,6 @@ jobs:
     - uses: actions/checkout@v2
     - name: Install ECCLL
       run: | 
-        apt install wget
         mkdir compiler
         cd compiler
         wget http://ellcc.org/releases/latest/ellcc-x86_64-linux-2017-08-23.bz2
