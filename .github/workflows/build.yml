@@ -15,8 +15,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install ECCLL
-    - run: apt install wget
-    - run: |
+      run: apt install wget
+      run: |
         mkdir compiler
         cd compiler
         wget http://ellcc.org/releases/latest/ellcc-x86_64-linux-2017-08-23.bz2
@@ -24,4 +24,4 @@ jobs:
         ./ellcc install libraries
     
     - name: Build Arm64
-    - run: ecc++ -target arm64v8-linux noso-2m.cpp md5-c.cpp -o noso-arm64 -std=c++17 -lpthread -O3 -static
+      run: ecc++ -target arm64v8-linux noso-2m.cpp md5-c.cpp -o noso-arm64 -std=c++17 -lpthread -O3 -static
