@@ -26,8 +26,8 @@ jobs:
         cd ellcc
         ./ellcc install
         ./ellcc install libraries
-        cd ..
+        cd ../../
         ls
     
     - name: Build Arm64
-      run: ecc++ -target arm64v8-linux noso-2m.cpp md5-c.cpp -o noso-arm64 -std=c++17 -lpthread -O3 -static
+      run: ./ellcc/bin/ecc++ -target arm64v8-linux noso-2m.cpp md5-c.cpp -o noso-arm64 -std=c++17 -lpthread -O3 -static
