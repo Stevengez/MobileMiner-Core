@@ -16,14 +16,17 @@ jobs:
     - uses: actions/checkout@v2
     - name: Install ECCLL
       run: | 
+        pwd
+        ls
         mkdir compiler
         cd compiler
-        wget "http://ellcc.org/releases/latest/ellcc-x86_64-linux-2017-08-23.bz2" -O temp.bz2
+        wget -q "http://ellcc.org/releases/latest/ellcc-x86_64-linux-2017-08-23.bz2" -O temp.bz2
         bunzip2 temp.bz2
         tar xvf temp
         cd ellcc
         ./ellcc install
         ./ellcc install libraries
+        ls
     
     - name: Build Arm64
       run: ecc++ -target arm64v8-linux noso-2m.cpp md5-c.cpp -o noso-arm64 -std=c++17 -lpthread -O3 -static
