@@ -22,10 +22,11 @@ jobs:
         cd compiler
         wget -q "http://ellcc.org/releases/latest/ellcc-x86_64-linux-2017-08-23.bz2" -O temp.bz2
         bunzip2 temp.bz2
-        tar xvf temp
+        tar xf temp
         cd ellcc
         ./ellcc install
         ./ellcc install libraries
+        cd ..
         ls
     
     - name: Build Arm64
