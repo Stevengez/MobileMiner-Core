@@ -8,7 +8,7 @@ on:
     branches: [main]
 
 jobs:
-  build:
+  build-core:
     name: Build Arm32/64 Core
     runs-on: ubuntu-latest
 
@@ -28,9 +28,10 @@ jobs:
         ls
     
     - name: Build Arm64
-      run: |
-        ./ellcc/bin/ecc++ -target arm64v8-linux noso-2m.cpp md5-c.cpp -o miner-arm64 -std=c++17 -lpthread -O3 -static
-        ./ellcc/bin/ecc++ -target arm32v7-linux noso-2m.cpp md5-c.cpp -o miner-arm32 -std=c++17 -lpthread -O3 -static
+      run: ./ellcc/bin/ecc++ -target arm64v8-linux main.cpp md5-c.cpp -o miner-arm64 -std=c++17 -lpthread -O3 -static
+    
+    - name: Build Arm32
+      run: ./ellcc/bin/ecc++ -target arm32v7-linux main.cpp md5-c.cpp -o miner-arm32 -std=c++17 -lpthread -O3 -static
 
     - name: Upload Binaries
     - uses: actions/upload-artifact@v3
